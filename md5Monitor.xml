@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>5.4</version>
+    <date>2021-12-02T00:19:46Z</date>
+    <groups>
+        <group>
+            <uuid>7df96b18c230490a9a0a9e2307226338</uuid>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <uuid>97836b47d26443b493c3f30f5166d2fd</uuid>
+            <template>Template File Change Monitor</template>
+            <name>Template File Change Monitor</name>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <discovery_rules>
+                <discovery_rule>
+                    <uuid>aebcfd32f41c4314b0c728d219183e2f</uuid>
+                    <name>/etc/pam.d File Check</name>
+                    <key>md5.check[json,/etc/pam.d]</key>
+                    <item_prototypes>
+                        <item_prototype>
+                            <uuid>8aee32e625d24984b2189c19964024f9</uuid>
+                            <name>{#FILENAME} md5</name>
+                            <key>md5.check.value[json,/etc/pam.d,{#FILENAME}]</key>
+                            <trends>0</trends>
+                            <value_type>TEXT</value_type>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>830dc789c61548dd97110b3356c609d7</uuid>
+                                    <expression>change(/Template File Change Monitor/md5.check.value[json,/etc/pam.d,{#FILENAME}])&lt;&gt;0</expression>
+                                    <name>{#FILENAME} md5 Has Changed</name>
+                                    <priority>AVERAGE</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                    </item_prototypes>
+                </discovery_rule>
+            </discovery_rules>
+        </template>
+    </templates>
+</zabbix_export>
